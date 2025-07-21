@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Movie Details | CineChoice</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(145deg, #0d0d0d, #1e1e1e);
+      color: #fff;
+      padding: 40px;
+    }
+
+    .back-link {
+      margin-bottom: 20px;
+      display: inline-block;
+      color: #0ff;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .movie-container {
+      display: flex;
+      gap: 40px;
+      background: #111;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .poster img {
+      width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px #0ff88f;
+    }
+
+    .details {
+      flex: 1;
+      max-width: 600px;
+    }
+
+    .details h1 {
+      font-size: 26px;
+      color: #0ff;
+      margin-bottom: 10px;
+    }
+
+    .details p {
+      color: #ccc;
+      font-size: 16px;
+      margin: 10px 0;
+      line-height: 1.5;
+    }
+
+    .info p {
+      margin: 5px 0;
+    }
+
+    .info strong {
+      color: #fff;
+    }
+
+    .trailer-container {
+      margin-top: 40px;
+      background: #111;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,255,255,0.2);
+      text-align: center;
+    }
+
+    .trailer-container h2 {
+      color: #0ff;
+      margin-bottom: 20px;
+    }
+
+    iframe {
+      border-radius: 10px;
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="back-link">← Back to Home</a>
+
+  <div id="movieDetails" class="movie-container">
+    <p>Loading movie details...</p>
+  </div>
+
+  <div id="trailerSection" class="trailer-container" style="display:none;">
+    <h2>🎬 Trailer</h2>
+    <div id="trailerVideo"></div>
+  </div>
+
+  <script>
+    const API_KEY = ""; // 🔑 Replace with your actual TMDB key
+    const urlParams = new URLSearchParams(window.location.search);
+    const movieId = urlParams.get("id");
+
+    if (movieId) {
+      // Fetch movie details
+      fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`)
+        .then((res) => res.json())
+        .then((movie) => {
+          const poster = movie.poster_path
+            ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+            : "https://via.placeholder.com/300x450?text=No+Image";
+
+          const overview = movie.overview || "No overview available.";
+          const cost = Math.floor(movie.popularity * 100).toLocaleString();
+
+          const html = `
+            <div class="poster">
+              <img src="${poster}" alt="${movie.title}" />
+            </div>
+            <div class="details">
+              <h1>${movie.title}</h1>
+              <p>${overview}</p>
+              <div class="info">
+                <p><strong>Rating:</strong> ⭐ ${movie.vote_average}</p>
+                <p><strong>Language:</strong> ${movie.original_language.toUpperCase()}</p>
+                <p><strong>Release Date:</strong> ${movie.release_date}</p>
+                <p><strong>Cost:</strong> ₹ ${cost} (estimated)</p>
+              </div>
+            </div>
+          `;
+          document.getElementById("movieDetails").innerHTML = html;
+        });
+
+      // Fetch trailer
+      fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`)
+        .then((res) => res.json())
+        .then((videoData) => {
+          const trailer = videoData.results.find(
+            (v) => v.type === "Trailer" && v.site === "YouTube"
+          );
+
+          if (trailer) {
+            document.getElementById("trailerVideo").innerHTML = `
+              <iframe src="https://www.youtube.com/embed/${trailer.key}" allowfullscreen></iframe>
+            `;
+            document.getElementById("trailerSection").style.display = "block";
+          }
+        })
+        .catch((err) => {
+          console.log("Trailer not available:", err);
+        });
+    } else {
+      document.getElementById("movieDetails").innerHTML = `<p>Invalid movie ID.</p>`;
+    }
+  </script>
+
+</body>
+</html>

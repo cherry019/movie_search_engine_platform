@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | CineChoice</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(145deg, #0d0d0d, #1e1e1e);
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-box {
+      background-color: #111;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #00ffff88;
+      width: 340px;
+      text-align: center;
+    }
+
+    .login-box h2 {
+      color: #00ffff;
+      margin-bottom: 25px;
+      font-size: 24px;
+      text-shadow: 0 0 10px #00ffff;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 8px;
+      background-color: #222;
+      color: #0ff;
+      box-shadow: inset 0 0 6px #0ff;
+    }
+
+    .login-box input::placeholder {
+      color: #0ff;
+      opacity: 0.7;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 12px;
+      background-color: #00ffff;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-size: 15px;
+    }
+
+    .login-box button:hover {
+      background-color: #00e0e0;
+    }
+
+    .login-box .links {
+      margin-top: 20px;
+    }
+
+    .login-box .links a {
+      display: block;
+      margin: 6px 0;
+      color: #0ff;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    .login-box .links a:hover {
+      color: #00e0e0;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>CineChoice Login</h2>
+    <input type="email" placeholder="Email" />
+    <input type="password" placeholder="Password" />
+    <button>Login</button>
+
+    <div class="links">
+      <a href="forgot.html">Forgot Password?</a>
+      <a href="signup.html">Don't have an account? Sign Up</a>
+      <a href="index.html">← Back to Home</a>
+    </div>
+  </div>
+</body>
+</html>

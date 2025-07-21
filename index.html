@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie Recommender | CineChoice</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(145deg, #0d0d0d, #1e1e1e);
+      color: #fff;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: #111;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.7);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #00ffff;
+    }
+
+    .auth-buttons button {
+      margin-left: 10px;
+      padding: 10px 20px;
+      background-color: #00ffff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+    }
+
+    .auth-buttons button:hover {
+      transform: scale(1.1);
+    }
+
+    .search-section {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .search-section input {
+      padding: 10px;
+      width: 300px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+    }
+
+    .search-section button {
+      padding: 10px 20px;
+      margin-left: 10px;
+      border: none;
+      background-color: #00ffff;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .lang-buttons {
+      text-align: center;
+      margin: 30px;
+    }
+
+    .lang-buttons button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      background-color: #333;
+      color: #fff;
+      border: 1px solid #00ffff;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .lang-buttons button:hover {
+      background-color: #00ffff;
+      color: black;
+    }
+
+    .movie-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 40px;
+    }
+
+    .movie-card {
+      background-color: #222;
+      border-radius: 20px;
+      overflow: hidden;
+      width: 200px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .movie-card:hover {
+      transform: scale(1.05);
+    }
+
+    .movie-card img {
+      width: 100%;
+      display: block;
+    }
+
+    .movie-card .info {
+      padding: 15px;
+    }
+
+    .movie-card .info h3 {
+      font-size: 16px;
+      margin: 0 0 10px;
+    }
+
+    .movie-card .info p {
+      font-size: 14px;
+      color: #ccc;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">🎬 CineChoice</div>
+    <div class="auth-buttons">
+      <a href="login.html"><button>Login</button></a>
+      <a href="signup.html"><button>Signup</button></a>
+    </div>
+  </header>
+
+  <div class="search-section" id="mainContent">
+    <input type="text" id="searchInput" placeholder="Search movies...">
+    <button onclick="searchMovie()">Search</button>
+  </div>
+
+  <div class="lang-buttons" id="langSection">
+    <button onclick="loadByLanguage('te')">Telugu</button>
+    <button onclick="loadByLanguage('hi')">Hindi</button>
+    <button onclick="loadByLanguage('en')">English</button>
+  </div>
+
+  <div class="movie-grid" id="movieGrid"></div>
+
+  <script>
+    const API_KEY = "871169932cee1c95d5230d57476af218"; // 🔑 Replace with your real API key
+
+    function createMovieCard(movie) {
+      const poster = movie.poster_path
+        ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+        : 'https://via.placeholder.com/200x300?text=No+Image';
+
+      return `
+        <div class="movie-card" onclick="viewMovieDetails(${movie.id})">
+          <img src="${poster}" alt="${movie.title}" />
+          <div class="info">
+            <h3>${movie.title}</h3>
+            <p>⭐ ${movie.vote_average}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function loadByLanguage(langCode) {
+      fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_original_language=${langCode}`)
+        .then(res => res.json())
+        .then(data => {
+          const movies = data.results.slice(0, 12);
+          document.getElementById('movieGrid').innerHTML = movies.map(createMovieCard).join('');
+        })
+        .catch(err => {
+          alert("Error fetching language-specific movies: " + err.message);
+        });
+    }
+
+    function searchMovie() {
+      const query = document.getElementById('searchInput').value;
+      if (!query.trim()) return;
+
+      fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`)
+        .then(res => res.json())
+        .then(data => {
+          const movies = data.results.slice(0, 12);
+          document.getElementById('movieGrid').innerHTML = movies.map(createMovieCard).join('');
+        })
+        .catch(err => {
+          alert("Search error: " + err.message);
+        });
+    }
+
+    function viewMovieDetails(movieId) {
+      window.location.href = `movie-details.html?id=${movieId}`;
+    }
+
+    window.onload = () => {
+      fetch(`https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`)
+        .then(res => res.json())
+        .then(data => {
+          const movies = data.results.slice(0, 12);
+          document.getElementById('movieGrid').innerHTML = movies.map(createMovieCard).join('');
+        })
+        .catch(err => {
+          alert("Error loading trending movies: " + err.message);
+        });
+    }
+  </script>
+
+</body>
+</html>
