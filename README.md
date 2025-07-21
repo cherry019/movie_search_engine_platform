@@ -23,6 +23,36 @@ A modern and responsive movie search engine built using the **TMDB API**, where 
 - **Optional: 3D animations** using CSS or JavaScript
 
 ---
+# 🎬 CineChoice – Movie Search Engine Platform
+
+A modern web application that allows users to search and explore movies using **TMDB API**. It features a clean UI with 3D animations, secure login/signup, and detailed movie pages.
+
+---
+
+## 🔗 Live Demo
+
+🎥 [Watch Demo Video] (https://youtu.be/nV9FET85zbg?si=dfNR066IQ9WpZMPA)
+
+---
+
+---
+
+## 🖼️ Screenshots
+
+### 🔎 Home & Search Page
+![Search Page](![WhatsApp Image 2025-07-21 at 21 04 09_498a8638](https://github.com/user-attachments/assets/296fa736-b568-4d57-935a-a6ec82d1fb4f)
+)
+
+### 🎞️ Movie Details Page
+![Movie Details](![WhatsApp Image 2025-07-21 at 21 07 53_efaee0ac](https://github.com/user-attachments/assets/a44e4f31-6621-414c-b4bd-f209ed4da3a8)
+)
+
+### 🔐 Login & Signup Pages
+![Auth](![WhatsApp Image 2025-07-21 at 21 04 09_cd4855d3](https://github.com/user-attachments/assets/32d9d94b-8085-43c7-ab10-97b7cce9760d)
+)
+
+---
+
 
 
 ---
