@@ -44,11 +44,11 @@ A modern web application that allows users to search and explore movies using **
 
 
 ### 🎞️ Movie Details Page
-[WhatsApp Image 2025-07-21 at 21 07 53_efaee0ac](https://github.com/user-attachments/assets/a44e4f31-6621-414c-b4bd-f209ed4da3a8)
+![WhatsApp Image 2025-07-21 at 21 07 53_efaee0ac](https://github.com/user-attachments/assets/a44e4f31-6621-414c-b4bd-f209ed4da3a8)
 
 
 ### 🔐 Login & Signup Pages
-[WhatsApp Image 2025-07-21 at 21 09 22_bc236b33](https://github.com/user-attachments/assets/c3addcc6-708e-40af-9502-d4fa6e824d6a)
+![WhatsApp Image 2025-07-21 at 21 09 22_bc236b33](https://github.com/user-attachments/assets/c3addcc6-708e-40af-9502-d4fa6e824d6a)
 
 
 ---
