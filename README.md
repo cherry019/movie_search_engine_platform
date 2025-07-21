@@ -40,15 +40,15 @@ A modern web application that allows users to search and explore movies using **
 ## 🖼️ Screenshots
 
 ### 🔎 Home & Search Page
-![Search Page](![WhatsApp Image 2025-07-21 at 21 04 09_498a8638](https://github.com/user-attachments/assets/296fa736-b568-4d57-935a-a6ec82d1fb4f)
+(![WhatsApp Image 2025-07-21 at 21 04 09_498a8638](https://github.com/user-attachments/assets/296fa736-b568-4d57-935a-a6ec82d1fb4f)
 
 
 ### 🎞️ Movie Details Page
-![Movie Details](![WhatsApp Image 2025-07-21 at 21 07 53_efaee0ac](https://github.com/user-attachments/assets/a44e4f31-6621-414c-b4bd-f209ed4da3a8)
+(![WhatsApp Image 2025-07-21 at 21 07 53_efaee0ac](https://github.com/user-attachments/assets/a44e4f31-6621-414c-b4bd-f209ed4da3a8)
 
 
 ### 🔐 Login & Signup Pages
-![Auth](![WhatsApp Image 2025-07-21 at 21 04 09_cd4855d3](![WhatsApp Image 2025-07-21 at 21 09 22_bc236b33](https://github.com/user-attachments/assets/c3addcc6-708e-40af-9502-d4fa6e824d6a)
+(![WhatsApp Image 2025-07-21 at 21 04 09_cd4855d3](![WhatsApp Image 2025-07-21 at 21 09 22_bc236b33](https://github.com/user-attachments/assets/c3addcc6-708e-40af-9502-d4fa6e824d6a)
 
 
 ---
