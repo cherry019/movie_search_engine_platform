@@ -40,7 +40,7 @@ A modern web application that allows users to search and explore movies using **
 ## 🖼️ Screenshots
 
 ### 🔎 Home & Search Page
-[WhatsApp Image 2025-07-21 at 21 04 09_498a8638](https://github.com/user-attachments/assets/296fa736-b568-4d57-935a-a6ec82d1fb4f)
+![WhatsApp Image 2025-07-21 at 21 04 09_498a8638](https://github.com/user-attachments/assets/296fa736-b568-4d57-935a-a6ec82d1fb4f)
 
 
 ### 🎞️ Movie Details Page
